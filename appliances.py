@@ -7,10 +7,11 @@ from typing import List
 ################# CRUD #################
 ########################################
 
-class Appliances(BaseModel):	#ubah isinya
+class Appliances(BaseModel):	
 	appliance_id: int
 	appliance_name: str
 	appliance_power_watt: int
+	appliance_usage_in_minute: int
 
 json_filename="appliances.json"
 
@@ -42,7 +43,7 @@ async def add_appliance(appliance: Appliances):
 	for appliance_item in data['appliances']:
 		if appliance_item['appliance_id'] == appliance_dict['appliance_id']:
 			appliance_found = True
-			return "Appliance ID "+str(appliance_dict['appliance_id'])+" exists." #ubah jadi fungsi nambah store & bukunya
+			return "Appliance ID "+str(appliance_dict['appliance_id'])+" sudah tersedia."
 	
 	if not appliance_found:
 		data['appliances'].append(appliance_dict)
@@ -65,12 +66,12 @@ async def update_appliance(appliance: Appliances):
 			
 			with open(json_filename,"w") as write_file:
 				json.dump(data, write_file)
-			return "Appliance updated"	#ubah jadi fungsi ganti bukunya
+			return "Appliance updated"	
 	
 	if not appliance_found:
 		return "Appliance ID not found."
 	raise HTTPException(
-		status_code=404, detail=f'Store not found'
+		status_code=404, detail=f'Appliance Not Found'
 	)
 
 @router.delete('/{appliance_id}')
@@ -89,5 +90,5 @@ async def delete_appliance(appliance_id: int):
 	if not appliance_found:
 		return "Appliance ID not found."
 	raise HTTPException(
-		status_code=404, detail=f'Appliance not found'
+		status_code=404, detail=f'Appliance Not Found'
 	)
