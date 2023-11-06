@@ -42,7 +42,7 @@ Core service yang diimplementasikan pada EnergyMeter saat ini adalah penghitunga
 - **DELETE /appliances/{appliance_id}**
     - Menghapus data *appliance* dari file JSON berdasarkan *appliance_id*
 - **GET /rooms/**
-    - Mendapatkan seluruh *rooms* yang terdata pada file JSO
+    - Mendapatkan seluruh *rooms* yang terdata pada file JSON
 - **PUT /rooms/**
     - Mengubah/memperbaharui data dari sebuah *room*
 - **POST /rooms/**
