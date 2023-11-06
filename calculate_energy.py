@@ -1,8 +1,6 @@
 from fastapi import APIRouter, HTTPException
 import json
-from pydantic import BaseModel
 from typing import List
-from rooms import Room
 
 json_filename="rooms.json"
 
