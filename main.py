@@ -8,3 +8,8 @@ app = FastAPI()
 app.include_router(appliances_router, prefix = "/appliances")
 app.include_router(rooms_router, prefix = "/rooms")
 app.include_router(energy_meter_router, prefix = "/calculate-energy")
+
+#Landing Page
+@app.get('/')
+async def homepage():
+    return {"message": "Welcome to EnergyMeter!"}
