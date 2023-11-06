@@ -13,7 +13,7 @@ EnergyMeter mendukung penghematan energi yang dapat dilakukan oleh pemiliki ruma
 </p>
 
 ## Core Service
-Core service yang diimplementasikan pada EnergyMeter saat ini adalah penghitungan jumlah listrik yang digunakan oleh setiap komponen dalam sebuah ruangan dan menghitung estimasi biaya yang dibutuhkan dari listrik yang telah dikonsumsi. Kedepannya, EnergyMeter ingin bisa menyediakan fitru personalisasi golongan konsumen listrik dan juga menyediakan *analytics & insight* terkait penggunaan listrik.
+Core service yang diimplementasikan pada EnergyMeter saat ini adalah penghitungan jumlah listrik yang digunakan oleh setiap komponen dalam sebuah ruangan dan menghitung estimasi biaya yang dibutuhkan dari listrik yang telah dikonsumsi. Kedepannya, EnergyMeter ingin bisa menyediakan fitur personalisasi golongan konsumen listrik dan juga menyediakan *analytics & insight* terkait penggunaan listrik.
 
 ## Requirements
 - fastapi==0.104.1
