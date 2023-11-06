@@ -1,7 +1,7 @@
 # EnergyMeter
 
-Mata Kuliah : II3160 Teknologi Sistem Terintegrasi
-Nama : Farhan Algani Putra
+Mata Kuliah : II3160 Teknologi Sistem Terintegrasi <br/>
+Nama : Farhan Algani Putra <br/>
 NIM : 18221108
 
 ## Deskripsi Sistem
