@@ -38,9 +38,11 @@ class TokenData(BaseModel):
 class User(BaseModel):
     user_id: int
     username: str
-    email: str or None = None
     full_name: str or None = None
+    email: str or None = None
     disabled: bool or None = None
+    is_admin: bool
+    is_user: bool
 
 class UserInDB(User):
     hashed_password: str
@@ -136,7 +138,9 @@ async def register(user: User, password: str):
             "full_name": user.full_name,
             "email": user.email,
             "hashed_password": get_password_hash(password),
-            "disabled": user.disabled
+            "disabled": user.disabled,
+            "is_admin": user.is_admin,
+            "is_user": user.is_user
         }
         
         data['users'].append(new_input)

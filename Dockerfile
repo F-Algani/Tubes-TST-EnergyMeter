@@ -5,7 +5,7 @@ FROM python:3.10.0
 WORKDIR /code
 
 #Copy just the requirements into the working directory
-COPY ./requirements.txt /code/requirements.txt
+COPY ./requirements.txt ./
 
 #Install the dependencies from the requirements file
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
