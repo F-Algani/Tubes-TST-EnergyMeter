@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 import json
 from typing import List
+from auth import *
 
 json_filename="rooms.json"
 
@@ -16,7 +17,7 @@ def energy_usage(power: int, time: int):
     return total_price
 
 @router.get('/{room_id}')
-async def calculate_energy(room_id: int):
+async def calculate_energy(room_id: int, current_user: User = Depends(get_current_active_user)):
     price = 0
     
     for room_item in data['rooms']:

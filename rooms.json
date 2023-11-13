@@ -1,1 +1,46 @@
-{"rooms": [{"room_id": 1, "room_name": "Dapur", "room_appliances": [{"appliance_id": 1, "appliance_name": "Microwave", "appliance_power_watt": 1800, "appliance_usage_in_minute": 40}, {"appliance_id": 2, "appliance_name": "Kulkas", "appliance_power_watt": 3600, "appliance_usage_in_minute": 1440}]}, {"room_id": 2, "room_name": "Kamar", "room_appliances": [{"appliance_id": 3, "appliance_name": "Kipas Angin", "appliance_power_watt": 1200, "appliance_usage_in_minute": 960}, {"appliance_id": 4, "appliance_name": "Televisi", "appliance_power_watt": 4800, "appliance_usage_in_minute": 400}]}]}
+{
+   "rooms": [
+      {
+         "room_id": 1,
+         "room_name": "Dapur",
+         "room_appliances": [
+            {
+               "appliance_id": 1,
+               "appliance_name": "Microwave",
+               "appliance_power_watt": 1800,
+               "appliance_usage_in_minute": 40
+            },
+            {
+               "appliance_id": 2,
+               "appliance_name": "Kulkas",
+               "appliance_power_watt": 3600,
+               "appliance_usage_in_minute": 1440
+            }
+         ]
+      },
+      {
+         "room_id": 2,
+         "room_name": "Kamar",
+         "room_appliances": [
+            {
+               "appliance_id": 3,
+               "appliance_name": "Kipas Angin",
+               "appliance_power_watt": 1200,
+               "appliance_usage_in_minute": 960
+            },
+            {
+               "appliance_id": 4,
+               "appliance_name": "Televisi",
+               "appliance_power_watt": 4800,
+               "appliance_usage_in_minute": 400
+            },
+            {
+               "appliance_id": 6,
+               "appliance_name": "Radio",
+               "appliance_power_watt": 1200,
+               "appliance_usage_in_minute": 80
+            }
+         ]
+      }
+   ]
+}

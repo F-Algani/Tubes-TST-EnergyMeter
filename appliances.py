@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException
 import json
 from pydantic import BaseModel
 from typing import List
+from auth import *
 
 ########################################
 ################# CRUD #################
@@ -22,12 +23,12 @@ router = APIRouter()
 #app = FastAPI()
 
 @router.get('/')
-async def read_all_appliances():
+async def read_all_appliances(current_user: User = Depends(get_current_active_user)):
 	return data['appliances']
 
 
 @router.get('/{appliance_id}')
-async def read_appliance(appliance_id: int):
+async def read_appliance(appliance_id: int, current_user: User = Depends(get_current_active_user)):
 	for appliance_item in data['appliances']:
 		print(appliance_item)
 		if appliance_item['appliance_id'] == appliance_id:
@@ -37,7 +38,7 @@ async def read_appliance(appliance_id: int):
 	)
 
 @router.post('/')
-async def add_appliance(appliance: Appliances):
+async def add_appliance(appliance: Appliances, current_user: User = Depends(get_current_active_user)):
 	appliance_dict = appliance.dict()
 	appliance_found = False
 	for appliance_item in data['appliances']:
@@ -48,7 +49,7 @@ async def add_appliance(appliance: Appliances):
 	if not appliance_found:
 		data['appliances'].append(appliance_dict)
 		with open(json_filename,"w") as write_file:
-			json.dump(data, write_file)
+			json.dump(data, write_file, indent=2)
 
 		return appliance_dict
 	raise HTTPException(
@@ -56,7 +57,7 @@ async def add_appliance(appliance: Appliances):
 	)
 
 @router.put('/')
-async def update_appliance(appliance: Appliances):
+async def update_appliance(appliance: Appliances, current_user: User = Depends(get_current_active_user)):
 	appliance_dict = appliance.dict()
 	appliance_found = False
 	for appliance_idx, appliance_item in enumerate(data['appliances']):
@@ -65,7 +66,7 @@ async def update_appliance(appliance: Appliances):
 			data['appliances'][appliance_idx] = appliance_dict
 			
 			with open(json_filename,"w") as write_file:
-				json.dump(data, write_file)
+				json.dump(data, write_file, indent=2)
 			return "Appliance updated"	
 	
 	if not appliance_found:
@@ -75,7 +76,7 @@ async def update_appliance(appliance: Appliances):
 	)
 
 @router.delete('/{appliance_id}')
-async def delete_appliance(appliance_id: int):
+async def delete_appliance(appliance_id: int, current_user: User = Depends(get_current_active_user)):
 
 	appliance_found = False
 	for appliance_idx, appliance_item in enumerate(data['appliances']):
@@ -84,7 +85,7 @@ async def delete_appliance(appliance_id: int):
 			data['appliances'].pop(appliance_idx)
 			
 			with open(json_filename,"w") as write_file:
-				json.dump(data, write_file)
+				json.dump(data, write_file, indent=2)
 			return "Appliance updated"
 	
 	if not appliance_found:

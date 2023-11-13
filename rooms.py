@@ -3,6 +3,7 @@ import json
 from pydantic import BaseModel
 from typing import List
 from appliances import Appliances
+from auth import *
 
 ########################################
 ################# CRUD #################
@@ -21,12 +22,12 @@ with open(json_filename,"r") as read_file:
 router = APIRouter()
 
 @router.get('/')
-async def read_all_rooms():
+async def read_all_rooms(current_user: User = Depends(get_current_active_user)):
 	return data['rooms']
 
 
 @router.get('/{room_id}')
-async def read_room(room_id: int):
+async def read_room(room_id: int, current_user: User = Depends(get_current_active_user)):
 	for room_item in data['rooms']:
 		print(room_item)
 		if room_item['room_id'] == room_id:
@@ -36,7 +37,7 @@ async def read_room(room_id: int):
 	)
 
 @router.post('/')
-async def add_room(room: Room):
+async def add_room(room: Room, current_user: User = Depends(get_current_active_user)):
 	room_dict = room.dict()
 	room_found = False
 	for room_item in data['rooms']:
@@ -47,7 +48,7 @@ async def add_room(room: Room):
 	if not room_found:
 		data['rooms'].append(room_dict)
 		with open(json_filename,"w") as write_file:
-			json.dump(data, write_file)
+			json.dump(data, write_file, indent=3)
 
 		return room_dict
 	raise HTTPException(
@@ -55,7 +56,7 @@ async def add_room(room: Room):
 	)
 
 @router.put('/')
-async def update_room(room: Room):
+async def update_room(room: Room, current_user: User = Depends(get_current_active_user)):
 	room_dict = room.dict()
 	room_found = False
 	for room_idx, room_item in enumerate(data['rooms']):
@@ -64,7 +65,7 @@ async def update_room(room: Room):
 			data['rooms'][room_idx] = room_dict
 			
 			with open(json_filename,"w") as write_file:
-				json.dump(data, write_file)
+				json.dump(data, write_file, indent=3)
 			return "Room updated"	
 	
 	if not room_found:
@@ -74,7 +75,7 @@ async def update_room(room: Room):
 	)
 
 @router.delete('/{room_id}')
-async def delete_room(room_id: int):
+async def delete_room(room_id: int, current_user: User = Depends(get_current_active_user)):
 
 	room_found = False
 	for room_idx, room_item in enumerate(data['rooms']):
@@ -83,7 +84,7 @@ async def delete_room(room_id: int):
 			data['rooms'].pop(room_idx)
 			
 			with open(json_filename,"w") as write_file:
-				json.dump(data, write_file)
+				json.dump(data, write_file, indent=3)
 			return "Room updated"
 	
 	if not room_found:
