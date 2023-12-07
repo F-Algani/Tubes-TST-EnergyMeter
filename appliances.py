@@ -19,7 +19,7 @@ json_filename="appliances.json"
 with open(json_filename,"r") as read_file:
 	data = json.load(read_file)
 
-router = APIRouter()
+router = APIRouter(tags=["Appliances"])
 #app = FastAPI()
 
 @router.get('/')

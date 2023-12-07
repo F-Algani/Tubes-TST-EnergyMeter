@@ -8,7 +8,7 @@ json_filename="rooms.json"
 with open(json_filename,"r") as read_file:
 	data = json.load(read_file)
 
-router = APIRouter()
+router = APIRouter(tags=["Calculate Energy"])
 
 def energy_usage(power: int, time: int):
     

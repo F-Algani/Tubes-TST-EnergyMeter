@@ -1,0 +1,104 @@
+{
+  "desain_appliances": [
+    {
+      "id": 1,
+      "appliances": [
+        {
+          "id": 1,
+          "appliance_power_watt": 1800,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 2,
+          "appliance_power_watt": 3600,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 6,
+          "appliance_power_watt": 1200,
+          "appliance_usage_in_min": 90
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "appliances": [
+        {
+          "id": 3,
+          "appliance_power_watt": 1200,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 5,
+          "appliance_power_watt": 3200,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 6,
+          "appliance_power_watt": 1200,
+          "appliance_usage_in_min": 120
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "appliances": [
+        {
+          "id": 1,
+          "appliance_power_watt": 1800,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 4,
+          "appliance_power_watt": 4800,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 5,
+          "appliance_power_watt": 3200,
+          "appliance_usage_in_min": 120
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "appliances": [
+        {
+          "id": 1,
+          "appliance_power_watt": 1800,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 2,
+          "appliance_power_watt": 3600,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 4,
+          "appliance_power_watt": 4800,
+          "appliance_usage_in_min": 120
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "appliances": [
+        {
+          "id": 1,
+          "appliance_power_watt": 1800,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 2,
+          "appliance_power_watt": 3600,
+          "appliance_usage_in_min": 120
+        },
+        {
+          "id": 4,
+          "appliance_power_watt": 4800,
+          "appliance_usage_in_min": 120
+        }
+      ]
+    }
+  ]
+}

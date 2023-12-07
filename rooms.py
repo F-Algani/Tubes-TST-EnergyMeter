@@ -19,7 +19,7 @@ json_filename="rooms.json"
 with open(json_filename,"r") as read_file:
 	data = json.load(read_file)
 
-router = APIRouter()
+router = APIRouter(tags=["Rooms"])
 
 @router.get('/')
 async def read_all_rooms(current_user: User = Depends(get_current_active_user)):
