@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, Form
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
@@ -120,30 +120,34 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token": access_token, "token_type": "bearer"}
 
 @router.post("/register")
-async def register(user: User, password: str):
-    user_dict = user.dict()
+async def register(username: str = Form(...), full_name: str = Form(...), email: str = Form(...), password: str = Form(...)):
     user_found = False
+    # cek user
     for users in data['users']:
-        if users['username'] == user_dict['username']:
+        if users['username'] == username:
             user_found = True
-            return "Username "+str(user_dict['username'])+" sudah tersedia."
-        if users['user_id'] == user_dict['user_id']:
-            user_found = True
-            return "User ID "+str(user_dict['user_id'])+" sudah tersedia."
+            return f"Username {username} sudah tersedia."
 	
+
+    # count user
+    count = 0
+    for users in data['users']:
+        count += 1
+
+    # memasukkan user baru ke file users.json
     if not user_found:
         new_input = {
-            "user_id": user.user_id,
-            "username": user.username,
-            "full_name": user.full_name,
-            "email": user.email,
+            "user_id": count+1,
+            "username": username,
+            "full_name": full_name,
+            "email": email,
             "hashed_password": get_password_hash(password),
-            "disabled": user.disabled,
-            "is_admin": user.is_admin,
-            "is_user": user.is_user
+            "disabled": 0,
+            "is_admin": 1,
+            "is_user": 0
         }
         
         data['users'].append(new_input)
         with open(json_filename,"w") as write_file:
             json.dump(data, write_file, indent=3)
-        return user_dict
+        return "Registrasi Berhasil"
