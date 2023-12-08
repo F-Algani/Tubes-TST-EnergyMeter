@@ -55,3 +55,8 @@ Core service yang diimplementasikan pada EnergyMeter saat ini adalah penghitunga
     - Menghitung estimasi biaya yang dibutuhkan untuk sebuah *room* berdasarkan *room_id*
 - **GET /**
     - *Landing page*
+
+### Credits
+Frontend Page Reference:
+- GitHub Repository = https://github.com/salimi2991/signin-singup.git
+- Youtube Video = https://youtu.be/lcZTuM-50Pc?si=mvw4a9UFeYdRh9NA
